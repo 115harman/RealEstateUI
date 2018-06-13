@@ -1,3 +1,36 @@
-<p>
-  home works!
-</p>
+<div class="secondary-header">
+  <h1> Buy Your Dream Home </h1>
+  <img src="/assets/home.jpg" class="mat-elevation-z10" />
+</div>
+<div class="main-content">
+  <mat-card>
+    <form>
+
+      <mat-form-field class="width-100-percent" appearance="outline">
+        <input matInput placeholder="Enter locality, area or ZIP">
+        <button mat-icon-button matSuffix>
+          <mat-icon>search</mat-icon>
+        </button>
+      </mat-form-field>
+      <div>
+        <label>Bedrooms: </label>
+        <mat-radio-group>
+          <mat-radio-button value="1">1 Bed</mat-radio-button>
+          <mat-radio-button value="2">2 Bed</mat-radio-button>
+          <mat-radio-button value="3">3 Bed</mat-radio-button>
+          <mat-radio-button value="4">4 Bed</mat-radio-button>
+          <mat-radio-button value="5">5 Bed</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div>
+          <label>Bathrooms: </label>
+          <mat-radio-group>
+            <mat-radio-button value="1">1 Bath</mat-radio-button>
+            <mat-radio-button value="2">2 Bath</mat-radio-button>
+            <mat-radio-button value="3">3 Bath</mat-radio-button>
+            <mat-radio-button value="4">4 Bath</mat-radio-button>
+          </mat-radio-group>
+        </div>
+    </form>
+  </mat-card>
+</div>

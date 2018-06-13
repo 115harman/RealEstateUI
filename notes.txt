@@ -1,0 +1,44 @@
+angular project random notes:
+1. BrowserModule, BrowserAnimationsModule should be initiated only once in the app.module.ts (root)
+2. to change default css to less/sass write following code in angular.json
+	"schematics": {
+    "@schematics/angular:component": {
+      "styleext": "less"
+    }
+  }
+3. write following code in main css file to start any new project
+	* {
+    margin: 0;
+    padding: 0;
+	}
+
+	html {
+	  height: 100%;
+	}
+
+	body {
+	  position: relative;
+	  min-height: 100%;
+	}
+	
+	.footer {
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+	}
+	
+	.main-content-wrapper {
+		min-height: 100%;
+		height: auto !important;
+		padding-bottom: 110px;
+	}
+	
+4. use @import '{~path}' to import any css in style.css file.
+5. important links
+	angular material components : https://material.angular.io/components/categories
+	material icons:  https://material.io/tools/icons/?search=search&icon=search&style=round
+	pass data from one component to another: https://angularfirebase.com/lessons/sharing-data-between-angular-components-four-methods/
+6. use ng new {projectname} to start a new angular project
+7. use --dry-run parameter with ng to test command. e.g. ng g c home --dry-run
+8. 
+	
