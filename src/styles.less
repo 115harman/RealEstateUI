@@ -12,12 +12,20 @@ html {
 body {
   position: relative;
   min-height: 100%;
+  font-family: Roboto,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
 }
 
 @import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
+@import '~nouislider/distribute/nouislider.min.css';
 
 .main-content {
   padding: 30px;
+  display: flex;
+  flex-direction: column;
+
+  > * {
+    margin-bottom: 30px;
+  }
 }
 
 .width-100-percent {

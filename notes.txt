@@ -40,5 +40,5 @@ angular project random notes:
 	pass data from one component to another: https://angularfirebase.com/lessons/sharing-data-between-angular-components-four-methods/
 6. use ng new {projectname} to start a new angular project
 7. use --dry-run parameter with ng to test command. e.g. ng g c home --dry-run
-8. 
+8. link for flex-layout: https://alligator.io/angular/flex-layout/
 	

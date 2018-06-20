@@ -1,11 +1,12 @@
 <div class="secondary-header">
   <h1> Buy Your Dream Home </h1>
-  <img src="/assets/home.jpg" class="mat-elevation-z10" />
 </div>
+<!--<mat-card style="text-align:center">
+    <img src="/assets/home.jpg" class="mat-elevation-z10" />
+</mat-card>-->
 <div class="main-content">
   <mat-card>
     <form>
-
       <mat-form-field class="width-100-percent" appearance="outline">
         <input matInput placeholder="Enter locality, area or ZIP">
         <button mat-icon-button matSuffix>
@@ -14,23 +15,49 @@
       </mat-form-field>
       <div>
         <label>Bedrooms: </label>
-        <mat-radio-group>
-          <mat-radio-button value="1">1 Bed</mat-radio-button>
-          <mat-radio-button value="2">2 Bed</mat-radio-button>
-          <mat-radio-button value="3">3 Bed</mat-radio-button>
-          <mat-radio-button value="4">4 Bed</mat-radio-button>
-          <mat-radio-button value="5">5 Bed</mat-radio-button>
+        <mat-radio-group *ngFor='let validBed of validBeds'>
+          <mat-radio-button value="{{validBed.id}}">{{validBed.name}}</mat-radio-button>
         </mat-radio-group>
       </div>
       <div>
-          <label>Bathrooms: </label>
-          <mat-radio-group>
-            <mat-radio-button value="1">1 Bath</mat-radio-button>
-            <mat-radio-button value="2">2 Bath</mat-radio-button>
-            <mat-radio-button value="3">3 Bath</mat-radio-button>
-            <mat-radio-button value="4">4 Bath</mat-radio-button>
-          </mat-radio-group>
+        <label>Bathrooms: </label>
+        <mat-radio-group *ngFor='let validBath of validBaths'>
+          <mat-radio-button value="{{validBath.id}}">{{validBath.name}}</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div fxLayout>
+        <div style='margin-top: 15px' fxFlex='10%'>Price:</div>
+        <span style='margin-top: 15px' fxFlex='5%'> ${{(minPriceInput.value/1000).toFixed(1)}}k</span>
+        <div class='range-slider' fxFlex='80%'>
+          <mat-slider thumbLabel #minPriceInput [value]='25000' [displayWith]="formatLabel" [min]="minPrice" [max]="maxPrice"></mat-slider>
+          <mat-slider thumbLabel #maxPriceInput [value]='75000' [displayWith]="formatLabel" [min]="minPrice" [max]="maxPrice"></mat-slider>
         </div>
+        <span style='margin-top: 15px' fxFlex='5%'>${{(maxPriceInput.value/1000).toFixed(1)}}k</span>
+      </div>
     </form>
+  </mat-card>
+  <div fxLayout>
+    <div fxLayout='row-reverse' fxFlex='50%'>
+      <img src="/assets/real-estate/png/houses.png" class='feature-img'/>
+    </div>
+    <div fxLayoutAlign="center" fxLayout='column' fxFlex='50%'> 
+      <h1>Variety of listings
+        <br/> to suit your needs</h1>
+    </div>
+  </div>
+  <mat-card fxLayout>
+    <div fxLayoutAlign="center" fxLayout='column' style="text-align: right" fxFlex='50%'>
+      <h1>Cheapest prices
+        <br/> guaranteed</h1>
+    </div>
+    <div fxFlex='50%'>
+      <img src="/assets/real-estate/png/coin.png" class='feature-img'/>
+    </div>
+  </mat-card>
+  <mat-card fxLayout >
+    <mat-card-title>Buyer's Information</mat-card-title>
+    <mat-card>1</mat-card>
+    <mat-card>2</mat-card>
+    <mat-card>3</mat-card>
   </mat-card>
 </div>
