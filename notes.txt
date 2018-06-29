@@ -16,22 +16,23 @@ angular project random notes:
 	  height: 100%;
 	}
 
-	body {
-	  position: relative;
-	  min-height: 100%;
-	}
-	
-	.footer {
-		position: absolute;
-		bottom: 0;
-		width: 100%;
-	}
-	
-	.main-content-wrapper {
-		min-height: 100%;
-		height: auto !important;
-		padding-bottom: 110px;
-	}
+	The HTML
+<body class="Site">
+  <header>…</header>
+  <main class="Site-content">…</main>
+  <footer>…</footer>
+</body>
+
+The CSS
+.Site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.Site-content {
+  flex: 1;
+}
 	
 4. use @import '{~path}' to import any css in style.css file.
 5. important links
@@ -41,4 +42,4 @@ angular project random notes:
 6. use ng new {projectname} to start a new angular project
 7. use --dry-run parameter with ng to test command. e.g. ng g c home --dry-run
 8. link for flex-layout: https://alligator.io/angular/flex-layout/
-	
+9. routing advance:	https://www.concretepage.com/angular-2/angular-2-4-child-routes-and-relative-navigation-example

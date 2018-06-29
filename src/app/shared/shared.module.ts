@@ -41,6 +41,7 @@ import { CdkTableModule } from '@angular/cdk/table';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
   
   @NgModule({
@@ -88,6 +89,7 @@ import { CommonModule } from '@angular/common';
     ],
     imports: [
       CommonModule,
+      RouterModule,
 
       //material components
       MatToolbarModule

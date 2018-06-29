@@ -1,18 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { LookupService } from 'src/app/services/lookup.service';
+import { PropertyService } from 'src/app/services/property.service';
 import { ValidBeds } from 'src/app/models/valid_beds';
 import { ValidBaths } from 'src/app/models/valid_baths';
 import { ValidPriceDictionaries } from 'src/app/models/valid_price_dictionaries';
-import { PropertyService } from 'src/app/services/property.service';
 import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { PropertySearchFilter } from 'src/app/models/property-search-filter';
+import { ParamMap } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.less']
+  selector: 'app-search',
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.less']
 })
-export class HomeComponent implements OnInit {
+export class SearchComponent implements OnInit {
+
   validBeds: ValidBeds[];
   validBaths: ValidBaths[];
   validPriceDictionaries: ValidPriceDictionaries[];
@@ -25,9 +29,28 @@ export class HomeComponent implements OnInit {
     private _lookupService: LookupService,
     private _propertyService: PropertyService,
     private _router: Router,
-  ) { }
+    private _activatedRoute: ActivatedRoute
+  ) {
+      const keywords = this._activatedRoute.snapshot.queryParams['keywords'];
+      const bedCount = this._activatedRoute.snapshot.queryParams['bedCount'];
+      const bathCount = this._activatedRoute.snapshot.queryParams['bathCount'];
+      let minPrice = this._activatedRoute.snapshot.queryParams['minPrice'];
+      minPrice = (minPrice == undefined || isNaN(minPrice) ? this.minPriceLimit : minPrice);
+      let maxPrice = this._activatedRoute.snapshot.queryParams['maxPrice'];
+      maxPrice = (maxPrice == undefined || isNaN(maxPrice) ? this.maxPriceLimit : maxPrice);
+      this.filter = new PropertySearchFilter(
+        keywords,
+        bedCount,
+        bathCount,
+        minPrice,
+        maxPrice
+      );
+  }
 
   ngOnInit() {
+    var f = this._activatedRoute.parent.paramMap.pipe(
+    );
+
     this._lookupService
       .validBeds()
       .subscribe(result => {
@@ -45,8 +68,6 @@ export class HomeComponent implements OnInit {
       .subscribe(result => {
         this.validPriceDictionaries = result;
       });
-
-      this.filter = new PropertySearchFilter(null,null,null,25000,75000);
   }
 
   formatLabel(value: number | null) {
@@ -61,8 +82,4 @@ export class HomeComponent implements OnInit {
     return value;
   }
 
-  onSubmit(filter: any) {
-    //var filter = JSON.stringify(filterObj);
-    this._router.navigate(['/property/search/list'], { queryParams: filter });
-  }
 }

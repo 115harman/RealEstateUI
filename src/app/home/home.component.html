@@ -1,63 +1,72 @@
 <div class="secondary-header">
   <h1> Buy Your Dream Home </h1>
 </div>
-<!--<mat-card style="text-align:center">
-    <img src="/assets/home.jpg" class="mat-elevation-z10" />
-</mat-card>-->
 <div class="main-content">
   <mat-card>
-    <form>
+    <form #propertyFilterForm="ngForm" (ngSubmit)="onSubmit(propertyFilterForm.value)">
       <mat-form-field class="width-100-percent" appearance="outline">
-        <input matInput placeholder="Enter locality, area or ZIP">
+        <input matInput placeholder="Enter locality, area or ZIP" name='keywords' [(ngModel)]='filter.keywords' autocomplete="off">
         <button mat-icon-button matSuffix>
           <mat-icon>search</mat-icon>
         </button>
       </mat-form-field>
       <div>
         <label>Bedrooms: </label>
-        <mat-radio-group *ngFor='let validBed of validBeds'>
+        <mat-radio-group *ngFor='let validBed of validBeds' name='bedCount' [(ngModel)]='filter.bedCount'>
           <mat-radio-button value="{{validBed.id}}">{{validBed.name}}</mat-radio-button>
         </mat-radio-group>
       </div>
       <div>
         <label>Bathrooms: </label>
-        <mat-radio-group *ngFor='let validBath of validBaths'>
+        <mat-radio-group *ngFor='let validBath of validBaths' name='bathCount' [(ngModel)]='filter.bathCount'>
           <mat-radio-button value="{{validBath.id}}">{{validBath.name}}</mat-radio-button>
         </mat-radio-group>
       </div>
       <div fxLayout>
-        <div style='margin-top: 15px' fxFlex='10%'>Price:</div>
-        <span style='margin-top: 15px' fxFlex='5%'> ${{(minPriceInput.value/1000).toFixed(1)}}k</span>
-        <div class='range-slider' fxFlex='80%'>
-          <mat-slider thumbLabel #minPriceInput [value]='25000' [displayWith]="formatLabel" [min]="minPrice" [max]="maxPrice"></mat-slider>
-          <mat-slider thumbLabel #maxPriceInput [value]='75000' [displayWith]="formatLabel" [min]="minPrice" [max]="maxPrice"></mat-slider>
+        <div style='margin-top: 15px' fxFlex='10%' fxFlex.xs='20%'>Price:</div>
+        <div fxFlex='90%' fxFlex.xs='80%' fxLayout fxLayout.xs='column'>
+          <span style='margin-top: 15px' fxFlex='5%'> ${{(minPriceInput.value/1000).toFixed(1)}}k</span>
+          <div class='range-slider' fxFlex='90%'>
+            <mat-slider thumbLabel #minPriceInput [displayWith]="formatLabel" [min]="minPriceLimit" [max]="maxPriceLimit" name='minPrice'
+              [(ngModel)]='filter.minPrice'></mat-slider>
+            <mat-slider thumbLabel #maxPriceInput [displayWith]="formatLabel" [min]="minPriceLimit" [max]="maxPriceLimit" name='maxPrice'
+              [(ngModel)]='filter.maxPrice'></mat-slider>
+          </div>
+          <span style='margin-top: 15px' fxFlex='5%'>${{(maxPriceInput.value/1000).toFixed(1)}}k</span>
         </div>
-        <span style='margin-top: 15px' fxFlex='5%'>${{(maxPriceInput.value/1000).toFixed(1)}}k</span>
       </div>
     </form>
   </mat-card>
-  <div fxLayout>
-    <div fxLayout='row-reverse' fxFlex='50%'>
-      <img src="/assets/real-estate/png/houses.png" class='feature-img'/>
+  <div fxLayout fxLayout.xs='column'>
+    <div fxLayout='row-reverse' fxLayoutAlign.xs="center" fxFlex='50%' class='feature-img' fxFlexOrder.xs='2'>
+      <img src="/assets/real-estate/png/houses.png"  />
     </div>
-    <div fxLayoutAlign="center" fxLayout='column' fxFlex='50%'> 
+    <div fxLayoutAlign="center" fxLayout='column' fxFlex='50%' fxFlexOrder.xs='1'>
       <h1>Variety of listings
         <br/> to suit your needs</h1>
     </div>
   </div>
-  <mat-card fxLayout>
+  <mat-card fxLayout fxLayout.xs='column'>
     <div fxLayoutAlign="center" fxLayout='column' style="text-align: right" fxFlex='50%'>
       <h1>Cheapest prices
         <br/> guaranteed</h1>
     </div>
-    <div fxFlex='50%'>
-      <img src="/assets/real-estate/png/coin.png" class='feature-img'/>
+    <div fxFlex='50%' class='feature-img' fxLayout='row' fxLayoutAlign.xs="center">
+      <img src="/assets/real-estate/png/coin.png"  />
     </div>
   </mat-card>
-  <mat-card fxLayout >
+  <mat-card fxLayout='column' fxLayout.xs='column'>
     <mat-card-title>Buyer's Information</mat-card-title>
-    <mat-card>1</mat-card>
-    <mat-card>2</mat-card>
-    <mat-card>3</mat-card>
+    <div fxlayout>
+      <button mat-button matSuffix fxFlex>
+        <mat-icon>picture_as_pdf</mat-icon>
+      </button>
+      <button mat-button matSuffix fxFlex>
+        <mat-icon>picture_as_pdf</mat-icon>
+      </button>
+      <button mat-button matSuffix fxFlex>
+        <mat-icon>picture_as_pdf</mat-icon>
+      </button>
+    </div>
   </mat-card>
 </div>

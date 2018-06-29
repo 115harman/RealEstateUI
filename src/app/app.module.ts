@@ -10,9 +10,12 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { PageNotFoundComponent } from 'src/app/page-not-found/page-not-found.component';
 import { LookupService } from 'src/app/services/lookup.service';
+import { SearchComponent } from './property/search.component';
+import { ActivatedRoute } from '@angular/router';
 
 const routes = [
   { path: 'home', loadChildren: './home/home.module#HomeModule' },
+  { path: 'property', loadChildren: './property/property.module#PropertyModule' },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ]

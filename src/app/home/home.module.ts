@@ -3,11 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NouisliderModule } from 'ng2-nouislider';
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { FormsModule } from '@angular/forms';
 
 import { SharedModule } from 'src/app/shared/shared.module';
 import { HomeComponent } from './home.component';
 import { LookupService } from 'src/app/services/lookup.service';
-
 
 const routes = [
   { path: '', component: HomeComponent }
@@ -18,8 +18,8 @@ const routes = [
     SharedModule,
     CommonModule,
     RouterModule.forChild(routes),
-    NouisliderModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    FormsModule
   ],
   declarations: [HomeComponent],
   providers: [LookupService]
