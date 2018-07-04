@@ -92,7 +92,9 @@ import { RouterModule } from '@angular/router';
       RouterModule,
 
       //material components
-      MatToolbarModule
+      MatToolbarModule,
+      MatButtonModule,
+      MatIconModule
     ],
     declarations: [HeaderComponent, FooterComponent]
   })
