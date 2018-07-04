@@ -1,4 +1,7 @@
-<mat-toolbar color="primary" class="header mat-elevation-z10">
+<mat-toolbar color="primary" class="header mat-elevation-z10" style='padding-left: 0'>
+    <button mat-button (click)="toggleSidenav.emit()" *ngIf='showMenuButton' style='padding: 0; height: 100%;'>
+        <mat-icon>menu</mat-icon>
+    </button>
     <a routerLink="/">
         <img src="/assets/real-estate/svg/houses.svg">
     </a>

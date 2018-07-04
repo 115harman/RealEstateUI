@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { HelperService } from 'src/app/services/helper.service';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  @Output() toggleSidenav = new EventEmitter<void>();
+  @Input() showMenuButton : boolean = false;
 
-  ngOnInit() {
+  constructor(private _helperService: HelperService) { 
   }
 
+  ngOnInit() {
+    
+  }
 }

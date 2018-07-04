@@ -1,7 +1,9 @@
-<div class="secondary-header">
+<div fxLayout='column'>
+<app-header></app-header>
+<div class="secondary-header" fxFlex>
   <h1> Buy Your Dream Home </h1>
 </div>
-<div class="main-content">
+<div class="main-content" fxFlex>
   <mat-card>
     <form #propertyFilterForm="ngForm" (ngSubmit)="onSubmit(propertyFilterForm.value)">
       <mat-form-field class="width-100-percent" appearance="outline">
@@ -69,4 +71,6 @@
       </button>
     </div>
   </mat-card>
+</div>
+<app-footer></app-footer>
 </div>

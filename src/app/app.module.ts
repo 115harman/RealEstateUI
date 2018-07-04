@@ -12,6 +12,7 @@ import { PageNotFoundComponent } from 'src/app/page-not-found/page-not-found.com
 import { LookupService } from 'src/app/services/lookup.service';
 import { SearchComponent } from './property/search.component';
 import { ActivatedRoute } from '@angular/router';
+import { HelperService } from 'src/app/services/helper.service';
 
 const routes = [
   { path: 'home', loadChildren: './home/home.module#HomeModule' },
@@ -34,7 +35,7 @@ const routes = [
     RouterModule.forRoot(routes),
     FlexLayoutModule
   ],
-  providers: [ LookupService ],
+  providers: [ LookupService, HelperService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
